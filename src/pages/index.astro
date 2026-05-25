@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const recentPosts = allPosts.slice(0, 3);
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Trang chủ" description="Blog cá nhân - chia sẻ kiến thức">
@@ -30,7 +31,7 @@ const recentPosts = allPosts.slice(0, 3);
       {recentPosts.map(post => (
         <li>
           <a
-            href={`/${post.id}`}
+            href={base + '/' + post.id}
             class="font-medium text-fg no-underline hover:text-fg transition-colors"
           >
             {post.data.title}
@@ -41,7 +42,7 @@ const recentPosts = allPosts.slice(0, 3);
     </ul>
     {allPosts.length > 2 && (
       <p class="mt-6">
-        <a href="/all" class="text-sm text-primary hover:underline">Xem tất cả bài viết</a>
+        <a href={base + '/all'} class="text-sm text-primary hover:underline">Xem tất cả bài viết</a>
       </p>
     )}
   </section>
@@ -59,7 +60,7 @@ const recentPosts = allPosts.slice(0, 3);
       </li>
     </ul>
     <p class="mt-6">
-      <a href="/projects" class="text-sm text-primary hover:underline">Xem tất cả dự án</a>
+      <a href={base + '/projects'} class="text-sm text-primary hover:underline">Xem tất cả dự án</a>
     </p>
   </section>
 </BaseLayout>

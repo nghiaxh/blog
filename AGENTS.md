@@ -58,6 +58,8 @@ Schema (Zod) in `src/content.config.ts`:
 | `/projects` | `src/pages/projects.astro` | `/blog/projects` |
 | `/rss.xml` | `src/pages/rss.xml.js` | `/blog/rss.xml` |
 
+**Quan trọng:** Mọi internal link (absolute path) phải dùng `import.meta.env.BASE_URL` prefix, vì site deploy ở sub-path `/blog`. Ví dụ: `href={base + '/all'}`, `href={base + '/' + post.id}`.
+
 ## JSX / React
 
 Khi dùng React (`.tsx`), camelCase props: `className`, `strokeWidth`, `strokeLinecap`.
