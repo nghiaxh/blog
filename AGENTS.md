@@ -1,65 +1,59 @@
-# Color System & Dark Mode Conventions
+# Project Conventions
 
-## CSS Variables (defined in `src/styles/global.css`)
+## Tech Stack
 
-| Variable | Light | Dark | Dùng cho |
-|---|---|---|---|
-| `--color-fg` | `#111` | `#e5e5e5` | Nội dung chính (body, headings, links, văn bản) |
-| `--color-primary` | `#2563eb` | `#60a5fa` | Accent/màu nhấn (link hover) |
-| `--color-bg` | `#ffffff` | `#0a0a0a` | Nền trang |
-| `--color-border` | `#e5e5e5` | `#262626` | Đường viền |
+| Layer | Technology |
+|---|---|
+| Framework | Astro v6 |
+| CSS | Tailwind CSS v4 (via `@tailwindcss/vite`) |
+| Typography | `@tailwindcss/typography` (`.prose`) |
+| UI | Astro components (`.astro`), React 19 for interactive islands |
+| Content | Astro Content Collections (Markdown + MDX) |
+| Fonts | Inter (sans), JetBrains Mono (code) via Google Fonts |
+| Language | Vietnamese (`lang="vi"`) |
 
-## Quy tắc: chữ không bị xám
+## Theme (dark-only)
 
-Luôn dùng `text-(--color-fg) dark:text-(--color-fg-dark)` cho **tất cả văn bản**:
-- Body text, paragraphs
-- Section headings (h1, h2, h3)
-- List items, strong/bold
-- Post titles trên homepage
-- Metadata (ngày tháng, reading time, tags)
-- Back link (`← Home`)
-- Year labels
-- Footer text
-- Project descriptions
-- Nav links
+Theme values defined in `src/styles/global.css` via Tailwind v4 `@theme`:
 
-## Dark Mode: luôn dùng `dark:` pair
+| Class | Hex | Dùng cho |
+|---|---|---|
+| `text-fg` / `bg-fg` | `#e5e5e5` | Nội dung chính (body, headings, links) |
+| `text-primary` / `bg-primary` | `#60a5fa` | Accent/màu nhấn (links) |
+| `bg-bg` | `#0a0a0a` | Nền trang |
+| `border-border` | `#262626` | Đường viền |
 
-Mỗi class màu sắc phải đi kèm variant dark tương ứng:
+**Không có light mode.** Site chạy dark theme cố định. Không dùng `dark:` variants.
 
-```astro
-class="text-(--color-fg) dark:text-(--color-fg-dark)"
-class="hover:text-(--color-primary) dark:hover:text-(--color-primary-dark)"
-class="border-(--color-border) dark:border-(--color-border-dark)"
-class="bg-(--color-bg) dark:bg-(--color-bg-dark)"
-```
+## Text color rules
+
+Luôn dùng `text-fg` cho tất cả văn bản: body, headings, list items, metadata, back link, year labels, footer, nav links, project descriptions.
+
+Link mặc định dùng `text-primary`, hover chuyển `text-fg` kèm `hover:underline`.
 
 ## Prose (blog post body)
 
-`src/styles/global.css` override prose colors để đảm bảo nội dung bài viết không bị xám:
+`src/styles/global.css` override sẵn `--tw-prose-*` variables. Blog content nằm trong `<div class="prose prose-neutral max-w-none">`.
 
-```css
-@layer base {
-  .prose {
-    --tw-prose-body: var(--color-fg);
-    --tw-prose-headings: var(--color-fg);
-    --tw-prose-links: var(--color-primary);
-    --tw-prose-bold: var(--color-fg);
-    --tw-prose-code: var(--color-fg);
-  }
-  .dark .prose {
-    --tw-prose-body: var(--color-fg-dark);
-    --tw-prose-headings: var(--color-fg-dark);
-    --tw-prose-links: var(--color-primary-dark);
-    --tw-prose-bold: var(--color-fg-dark);
-    --tw-prose-code: var(--color-fg-dark);
-  }
-}
-```
+## Favicon
 
-## Lưu ý React JSX
+`public/favicon.svg` — nền đen (`#111`), chữ **N** trắng, bo góc 6px.
 
-Trong React component (`.tsx`), dùng camelCase props:
-- `className` thay vì `class`
-- `strokeWidth` thay vì `stroke-width`
-- `strokeLinecap` thay vì `stroke-linecap`
+## Content collection (blog)
+
+Schema (Zod) in `src/content.config.ts`:
+- `title` (string), `description` (string), `pubDate` (date)
+- `updatedDate` (date, optional), `tags` (string[], optional)
+- `coverImage` (string, optional), `draft` (boolean, default false)
+
+## Routing
+
+- `/` — homepage (3 bài gần nhất)
+- `/blog/[...slug]` — bài viết (`getStaticPaths` từ content collection)
+- `/all` — tất cả bài viết (grouped by year)
+- `/projects` — danh sách dự án
+- `/rss.xml` — RSS feed
+
+## JSX / React
+
+Khi dùng React (`.tsx`), camelCase props: `className`, `strokeWidth`, `strokeLinecap`.
