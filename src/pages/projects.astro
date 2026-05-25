@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Dự án" description="Các dự án của tôi">
+  <p class="mb-10 text-sm">
+    <a href="/" class="hover:text-fg hover:underline transition-colors">Quay lại</a>
+  </p>
+
+  <h1 class="text-3xl font-bold  mb-8 text-fg">Dự án</h1>
+
+  <section class="mb-10">
+    <h2 class="text-lg font-semibold mb-4">Đang hoạt động</h2>
+    <ul class="space-y-3">
+      <li>
+        <h3 class="font-medium hover:text-fg transition-colors">Tên dự án 1</h3>
+        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+      </li>
+      <li>
+        <h3 class="font-medium hover:text-fg transition-colors">Tên dự án 2</h3>
+        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+      </li>
+      <li>
+        <h3 class="font-medium hover:text-fg transition-colors">Tên dự án 3</h3>
+        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-lg font-semibold mb-4 text-fg">Đã tham gia</h2>
+    <ul class="space-y-3">
+      <li>
+        <span class="font-medium text-fg">Dự án cũ</span>
+        <p class="text-sm text-fg mt-0.5">Vai trò: Developer. 2024-2025.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-lg font-semibold mb-4 text-fg">Đã ngưng</h2>
+    <ul class="space-y-3">
+      <li>
+        <span class="font-medium text-fg">Dự án ngưng hoạt động</span>
+        <p class="text-sm text-fg mt-0.5">Dừng phát triển từ 2023.</p>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>

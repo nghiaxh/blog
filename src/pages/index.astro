@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const recentPosts = allPosts.slice(0, 3);
+---
+
+<BaseLayout title="Trang chủ" description="Blog cá nhân - chia sẻ kiến thức">
+  <section class="mb-16">
+    <h1 class="text-3xl font-bold  text-fg">Nghia Hoang</h1>
+    <br>
+    <p class="text-fg mt-1">
+      Developer &amp; Writer
+    </p>
+    <div class="flex flex-wrap gap-x-1.5 mt-3 text-sm text-fg">
+      <a href="https://github.com" target="_blank" rel="noopener" class="text-primary hover:text-fg hover:underline transition-colors">@github/nghiaxh</a>
+      <span></span>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="text-primary hover:text-fg hover:underline transition-colors">@linkedin/nghiaxh</a>
+    </div>
+    <p class="mt-4 text-fg">
+      Blog này là nơi mình chia sẻ kiến thức, kinh nghiệm và những dự án mình làm.
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-sm mb-6 text-fg  uppercase">Bài viết</h2>
+    <ul class="space-y-4">
+      {recentPosts.map(post => (
+        <li>
+          <a
+            href={`/blog/${post.id}`}
+            class="font-medium text-fg no-underline hover:text-fg transition-colors"
+          >
+            {post.data.title}
+          </a>
+          <p class="text-sm text-fg mt-0.5">{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+    {allPosts.length > 2 && (
+      <p class="mt-6">
+        <a href="/all" class="text-sm text-primary hover:underline">Xem tất cả bài viết</a>
+      </p>
+    )}
+  </section>
+
+  <section>
+    <h2 class="text-sm mb-6 text-fg  uppercase">Dự án</h2>
+    <ul class="space-y-3">
+      <li>
+        <span class="font-medium text-fg">Tên dự án 1</span>
+        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+      </li>
+      <li>
+        <span class="font-medium text-fg">Tên dự án 2</span>
+        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+      </li>
+    </ul>
+    <p class="mt-6">
+      <a href="/projects" class="text-sm text-primary hover:underline">Xem tất cả dự án</a>
+    </p>
+  </section>
+</BaseLayout>

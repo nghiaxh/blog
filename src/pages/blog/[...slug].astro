@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const wordCount = post.body ? post.body.trim().split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+interface Heading { level: number; text: string; id: string; }
+const headings: Heading[] = [];
+if (post.body) {
+  const lines = post.body.split('\n');
+  for (const line of lines) {
+    const match = line.match(/^(#{2,3})\s+(.+)$/);
+    if (match) {
+      const level = match[1].length;
+      const text = match[2].trim();
+      const id = text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+      headings.push({ level, text, id });
+    }
+  }
+}
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article>
+    <p class="mb-8 text-sm">
+      <a href="/" class="hover:text-fg hover:underline transition-colors">Quay lại</a>
+    </p>
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold  text-fg leading-tight">{post.data.title}</h1>
+      <div class="mt-3 flex flex-wrap gap-x-2 text-sm text-fg">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric', month: 'short', day: 'numeric',
+          })}
+        </time>
+        <span aria-hidden="true">&bull;</span>
+        <span>{readingTime} phút</span>
+        {post.data.tags && post.data.tags.length > 0 && (
+          <>
+            <span aria-hidden="true">&bull;</span>
+            <span class="flex gap-2">
+              {post.data.tags.map(tag => (
+                <span>#{tag}</span>
+              ))}
+            </span>
+          </>
+        )}
+      </div>
+    </header>
+
+    {post.data.coverImage && (
+      <img
+        src={post.data.coverImage}
+        alt=""
+        class="w-full rounded-lg mb-10"
+        loading="eager"
+      />
+    )}
+
+    {headings.length > 0 && (
+      <aside class="hidden lg:block fixed top-32 left-[max(calc(50%-21rem-14rem),1.5rem)] w-36">
+        <nav class="text-sm space-y-2 border-l border-border pl-3">
+          <p class="font-medium text-fg mb-3">Mục lục</p>
+          {headings.map(h => (
+            <a
+              href={`#${h.id}`}
+              class={`block hover:text-fg hover:underline transition-colors ${h.level === 3 ? 'pl-3' : ''}`}
+            >
+              {h.text}
+            </a>
+          ))}
+        </nav>
+      </aside>
+    )}
+    <div class="prose prose-neutral max-w-none prose-invert">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

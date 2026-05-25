@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const groupedByYear: Record<number, typeof posts> = {};
+for (const post of posts) {
+  const year = post.data.pubDate.getFullYear();
+  if (!groupedByYear[year]) groupedByYear[year] = [];
+  groupedByYear[year].push(post);
+}
+---
+
+<BaseLayout title="Bài viết" description="Tất cả bài viết">
+  <p class="mb-10 text-sm">
+    <a href="/" class="hover:text-fg hover:underline transition-colors">&larr; Quay lại</a>
+  </p>
+
+  <h1 class="text-3xl font-bold  mb-8 text-fg">Bài viết</h1>
+
+  {Object.entries(groupedByYear).reverse().map(([year, yearPosts]) => (
+    <div class="mb-10">
+      <h2 class="text-base font-bold mb-4 text-fg">{year}</h2>
+      <ul class="space-y-3">
+        {yearPosts.map(post => (
+          <li>
+            <a
+              href={`/blog/${post.id}`}
+              class="font-medium text-fg no-underline hover:text-fg transition-colors"
+            >
+              {post.data.title}
+            </a>
+            <p class="text-sm text-fg mt-0.5">{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</BaseLayout>

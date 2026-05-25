@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --color-primary: #60a5fa;
+  --color-bg: #0a0a0a;
+  --color-fg: #e5e5e5;
+  --color-border: #262626;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+@layer base {
+  .prose {
+    --tw-prose-body: var(--color-fg);
+    --tw-prose-headings: var(--color-fg);
+    --tw-prose-links: var(--color-primary);
+    --tw-prose-bold: var(--color-fg);
+    --tw-prose-code: var(--color-fg);
+    --tw-prose-quotes: var(--color-fg);
+  }
+}
