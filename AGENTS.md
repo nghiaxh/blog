@@ -48,11 +48,15 @@ Schema (Zod) in `src/content.config.ts`:
 
 ## Routing
 
-- `/` — homepage (3 bài gần nhất)
-- `/blog/[...slug]` — bài viết (`getStaticPaths` từ content collection)
-- `/all` — tất cả bài viết (grouped by year)
-- `/projects` — danh sách dự án
-- `/rss.xml` — RSS feed
+`base: '/blog'` (GitHub Pages project site).
+
+| Route | File | URL thực tế |
+|---|---|---|
+| `/` | `src/pages/index.astro` | `/blog/` |
+| `/[slug]` | `src/pages/[...slug].astro` | `/blog/slug` |
+| `/all` | `src/pages/all/index.astro` | `/blog/all` |
+| `/projects` | `src/pages/projects.astro` | `/blog/projects` |
+| `/rss.xml` | `src/pages/rss.xml.js` | `/blog/rss.xml` |
 
 ## JSX / React
 

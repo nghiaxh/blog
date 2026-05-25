@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://yourdomain.com',
+  site: 'https://nghiaxh.github.io',
+  base: '/blog',
   integrations: [react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

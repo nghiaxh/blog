@@ -6,12 +6,12 @@ export async function GET() {
   return rss({
     title: 'Trang của tôi',
     description: 'Blog cá nhân - chia sẻ kiến thức và dự án',
-    site: 'https://yourdomain.com',
+    site: 'https://nghiaxh.github.io/blog',
     items: posts.map(post => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/blog/${post.id}/`,
+      link: `/${post.id}/`,
     })),
   });
 }
