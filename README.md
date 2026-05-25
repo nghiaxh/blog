@@ -1,46 +1,26 @@
-# Astro Starter Kit: Basics
+# nxh Blog
 
-```sh
-npm create astro@latest -- --template basics
-```
+Blog cá nhân của Nghia Hoang.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Công nghệ
 
-## 🚀 Project Structure
+Astro, Tailwind CSS, React, MDX.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Cấu trúc
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── components/   # UI components
+├── content/blog/ # Bài viết .md/.mdx
+├── layouts/      # BaseLayout
+├── pages/        # Trang chủ, bài viết, dự án, RSS
+└── styles/       # global.css (Tailwind + theme)
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Lệnh
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Lệnh | Mô tả |
+|---|---|
+| `npm run dev` | Chạy dev server (`localhost:4321`) |
+| `npm run build` | Build ra `dist/` |
+| `npm run preview` | Xem bản build |
