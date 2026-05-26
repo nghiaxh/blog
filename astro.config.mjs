@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -9,7 +8,7 @@ import rehypeVietnameseSlug from './src/plugins/rehype-vietnamese-slug.ts';
 export default defineConfig({
   site: 'https://nghiaxh.github.io',
   base: '/blog',
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },

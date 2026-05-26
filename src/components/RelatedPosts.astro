@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  currentPost: {
+    id: string;
+    data: { tags?: string[] };
+  };
+}
+
+const { currentPost } = Astro.props;
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const related = allPosts
+  .filter(p => p.id !== currentPost.id)
+  .map(p => ({
+    entry: p,
+    shared: p.data.tags?.filter(t => currentPost.data.tags?.includes(t)).length ?? 0,
+  }))
+  .sort((a, b) => b.shared - a.shared)
+  .slice(0, 3);
+
+const base = import.meta.env.BASE_URL;
+---
+
+{related.length > 0 && (
+  <section class="mt-16 pt-8 border-t border-border">
+    <h2 class="text-sm mb-6 text-fg uppercase">Bài viết liên quan</h2>
+    <ul class="space-y-4">
+      {related.map(({ entry }) => (
+        <li>
+          <a href={base + '/' + entry.id}>
+            <h3 class="font-medium text-fg no-underline hover:text-fg transition-colors">{entry.data.title}</h3>
+            <p class="text-sm text-fg mt-0.5">{entry.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -75,8 +76,11 @@ const headings = renderedHeadings
         </nav>
       </aside>
     )}
-    <div class="prose prose-neutral max-w-none prose-invert">
+    <div class="prose prose-neutral max-w-none">
       <Content />
     </div>
   </article>
+
+  <RelatedPosts currentPost={post} />
+
 </BaseLayout>
