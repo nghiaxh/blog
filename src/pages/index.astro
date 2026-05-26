@@ -5,6 +5,11 @@ import { getCollection } from 'astro:content';
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const recentPosts = allPosts.slice(0, 3);
+
+const allTutorials = await getCollection('tutorial', ({ data }) => !data.draft);
+allTutorials.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const recentTutorials = allTutorials.slice(0, 3);
+
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -25,8 +30,10 @@ const base = import.meta.env.BASE_URL;
     </p>
   </section>
 
-  <section class="mb-16">
-    <h2 class="text-sm mb-6 text-fg  uppercase">Bài viết</h2>
+  <section class="mb-8">
+    <a href={base + "/all"}>
+      <h2 class="text-sm mb-6 text-fg  uppercase">Bài viết</h2>
+    </a>
     <ul class="space-y-4">
       {recentPosts.map(post => (
         <li>
@@ -44,8 +51,31 @@ const base = import.meta.env.BASE_URL;
     )}
   </section>
 
+  <section class="mb-8">
+    <a href={base + "/tutorial"}>
+      <h2 class="text-sm mb-6 text-fg  uppercase">Hướng dẫn</h2>
+    </a>
+    <ul class="space-y-4">
+      {recentTutorials.map(t => (
+        <li>
+          <a href={base + '/tutorial/' + t.id}>
+            <h3 class="font-medium text-fg no-underline hover:text-fg transition-colors">{t.data.title}</h3>
+            <p class="text-sm text-fg mt-0.5">{t.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+    {allTutorials.length > 2 && (
+      <p class="mt-6">
+        <a href={base + '/tutorial'} class="text-sm text-primary hover:underline hover:text-fg transition-colors">Xem tất cả hướng dẫn</a>
+      </p>
+    )}
+  </section>
+
   <section>
-    <h2 class="text-sm mb-6 text-fg  uppercase">Dự án</h2>
+    <a href={base + "/projects"}>
+      <h2 class="text-sm mb-6 text-fg uppercase">Dự án</h2>
+    </a>
     <ul class="space-y-3">
       <li>
         <span class="font-medium text-fg">Tên dự án 1</span>
