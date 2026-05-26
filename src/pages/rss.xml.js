@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 export async function GET() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return rss({
-    title: 'Trang của tôi',
+    title: 'Blog',
     description: 'Blog cá nhân - chia sẻ kiến thức và dự án',
     site: 'https://nghiaxh.github.io/blog',
     items: posts.map(post => ({
