@@ -63,3 +63,26 @@ Schema (Zod) in `src/content.config.ts`:
 ## JSX / React
 
 Khi dùng React (`.tsx`), camelCase props: `className`, `strokeWidth`, `strokeLinecap`.
+
+## Git commit convention
+
+Dùng [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <description>
+```
+
+Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `style`, `perf`, `test`, `ci`, `build`.
+
+- `feat` — tính năng mới
+- `fix` — sửa lỗi
+- `docs` — thay đổi tài liệu/blog content
+- `refactor` — tái cấu trúc code (không thay đổi hành vi)
+- `chore` — bảo trì, dependencies, config
+- `style` — format code, CSS
+- `ci` — CI/CD
+- `build` — build system
+
+Scope (tuỳ chọn) là tên file/thư mục chịu ảnh hưởng. Ví dụ: `feat(favicon):`, `fix(blog):`, `chore(deps):`.
+
+Viết mô tả bằng tiếng Anh, thì hiện tại, không viết hoa chữ cái đầu, không có dấu chấm cuối.
