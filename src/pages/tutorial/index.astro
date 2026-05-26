@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allTutorials = await getCollection('tutorial', ({ data }) => !data.draft);
+allTutorials.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const grouped: Record<string, typeof allTutorials> = {};
+for (const t of allTutorials) {
+  const category = t.data.category ?? t.id.split('/')[0];
+  if (!grouped[category]) grouped[category] = [];
+  grouped[category].push(t);
+}
+
+const base = import.meta.env.BASE_URL;
+const categoryLabels: Record<string, string> = {
+  astro: 'Astro',
+  react: 'React',
+};
+---
+
+<BaseLayout title="Hướng dẫn" description="Các hướng dẫn chi tiết">
+  <p class="mb-10 text-sm">
+    <a href={base} class="hover:text-fg hover:underline transition-colors">Quay lại</a>
+  </p>
+
+  <h1 class="text-3xl font-bold text-fg mb-8">Hướng dẫn</h1>
+
+  {Object.entries(grouped).map(([category, tutorials]) => (
+    <section class="mb-12">
+      <h2 class="text-sm mb-4 text-fg uppercase">{categoryLabels[category] ?? category}</h2>
+      <ul class="space-y-4">
+        {tutorials.map(t => (
+          <li>
+            <a href={base + '/tutorial/' + t.id}>
+              <h3 class="font-medium text-fg no-underline hover:text-fg transition-colors">{t.data.title}</h3>
+              <p class="text-sm text-fg mt-0.5">{t.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>
