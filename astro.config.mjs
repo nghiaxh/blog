@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import rehypeSlug from 'rehype-slug';
 
 export default defineConfig({
   site: 'https://nghiaxh.github.io',
@@ -10,5 +11,8 @@ export default defineConfig({
   integrations: [react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
+  },
+  markdown: {
+    rehypePlugins: [rehypeSlug],
   },
 });
