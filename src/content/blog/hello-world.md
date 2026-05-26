@@ -1,6 +1,6 @@
 ---
-title: 'Xin chào thế giới'
-description: 'Bài viết đầu tiên với đầy đủ định dạng Markdown'
+title: 'Hello World'
+description: 'Hướng dẫn viết định dạng Markdown'
 pubDate: 2026-05-25
 tags: ['personal', 'markdown']
 ---
