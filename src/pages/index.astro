@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
     </p>
   </section>
 
-  <section class="mb-8">
+  <section class="mb-16">
     <a href={base + "/all"}>
       <h2 class="text-sm mb-6 text-fg  uppercase">Bài viết</h2>
     </a>
@@ -39,7 +39,7 @@ const base = import.meta.env.BASE_URL;
         <li>
           <a href={base + '/' + post.id}>
             <h3 class="font-medium text-fg no-underline hover:text-fg transition-colors">{post.data.title}</h3>
-            <p class="text-sm text-fg mt-0.5">{post.data.description}</p>
+            <p class="text-sm text-fg/60 mt-0.5">{post.data.description}</p>
           </a>
         </li>
       ))}
@@ -51,7 +51,7 @@ const base = import.meta.env.BASE_URL;
     )}
   </section>
 
-  <section class="mb-8">
+  <section class="mb-16">
     <a href={base + "/tutorial"}>
       <h2 class="text-sm mb-6 text-fg  uppercase">Hướng dẫn</h2>
     </a>
@@ -60,7 +60,7 @@ const base = import.meta.env.BASE_URL;
         <li>
           <a href={base + '/tutorial/' + t.id}>
             <h3 class="font-medium text-fg no-underline hover:text-fg transition-colors">{t.data.title}</h3>
-            <p class="text-sm text-fg mt-0.5">{t.data.description}</p>
+            <p class="text-sm text-fg/60 mt-0.5">{t.data.description}</p>
           </a>
         </li>
       ))}
@@ -79,11 +79,11 @@ const base = import.meta.env.BASE_URL;
     <ul class="space-y-3">
       <li>
         <span class="font-medium text-fg">Tên dự án 1</span>
-        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+        <p class="text-sm text-fg/60 mt-0.5">Mô tả ngắn về dự án này.</p>
       </li>
       <li>
         <span class="font-medium text-fg">Tên dự án 2</span>
-        <p class="text-sm text-fg mt-0.5">Mô tả ngắn về dự án này.</p>
+        <p class="text-sm text-fg/60 mt-0.5">Mô tả ngắn về dự án này.</p>
       </li>
     </ul>
     <p class="mt-6">

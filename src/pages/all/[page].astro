@@ -58,7 +58,7 @@ for (const post of pagePosts) {
     <nav class="flex justify-between items-center mt-12 pt-8 border-t border-border">
       <a
         href={currentPage === 2 ? base + '/all' : base + '/all/' + (currentPage - 1)}
-        class="text-sm text-primary hover:underline hover:text-fg transition-colors"
+        class="text-sm hover:underline hover:text-fg transition-colors"
       >
         &larr; Trang trước
       </a>
@@ -66,7 +66,7 @@ for (const post of pagePosts) {
       {currentPage < totalPages ? (
         <a
           href={base + '/all/' + (currentPage + 1)}
-          class="text-sm text-primary hover:underline hover:text-fg transition-colors"
+          class="text-sm hover:underline hover:text-fg transition-colors"
         >
           Trang sau &rarr;
         </a>
