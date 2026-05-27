@@ -1,0 +1,22 @@
+<button
+  id="scroll-top"
+  aria-label="Lên đầu trang"
+  class="fixed bottom-6 right-6 z-50 flex size-9 items-center justify-center rounded-full border border-border bg-border text-fg opacity-0 pointer-events-none cursor-pointer transition-all duration-200 hover:bg-fg hover:text-bg"
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15" />
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById('scroll-top')!;
+
+  addEventListener('scroll', () => {
+    btn.classList.toggle('opacity-0', scrollY < 300);
+    btn.classList.toggle('pointer-events-none', scrollY < 300);
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
