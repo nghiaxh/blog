@@ -8,6 +8,7 @@
 | CSS | Tailwind CSS v4 (via `@tailwindcss/vite`) |
 | Typography | `@tailwindcss/typography` (`.prose`) |
 | UI | Astro components (`.astro`), React 19 for interactive islands |
+| Diagrams | Mermaid via `astro-mermaid` (client-side, dark theme) |
 | Content | Astro Content Collections (Markdown + MDX) |
 | Fonts | Inter (sans), JetBrains Mono (code) via Google Fonts |
 | Language | Vietnamese (`lang="vi"`) |
@@ -57,6 +58,21 @@ Link mặc định dùng `text-primary`, hover chuyển `text-fg` kèm `hover:un
 ## Prose (blog post body)
 
 `src/styles/global.css` override sẵn `--tw-prose-*` variables. Blog content nằm trong `<div class="prose prose-neutral max-w-none">`.
+
+## Mermaid
+
+Cấu hình trong `astro.config.mjs` — `mermaid({ theme: 'dark', autoTheme: true })`.
+
+Dùng trong Markdown/MDX:
+
+````
+```mermaid
+graph LR
+  A[Start] --> B[End]
+```
+````
+
+Render phía client (không ảnh hưởng build time). Site dark theme nên `theme: 'dark'`.
 
 ## Favicon
 
