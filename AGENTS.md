@@ -1,4 +1,4 @@
-# Project Conventions
+# AGENTS.md — blog
 
 ## Tech Stack
 
@@ -11,6 +11,29 @@
 | Content | Astro Content Collections (Markdown + MDX) |
 | Fonts | Inter (sans), JetBrains Mono (code) via Google Fonts |
 | Language | Vietnamese (`lang="vi"`) |
+
+## Commands
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Astro dev server |
+| `npm run build` | `astro build` — static site to `dist/` |
+| `npm run preview` | Astro preview of built `dist/` |
+
+No linter or test framework configured.
+
+## Deployment
+
+GitHub Pages via [`actions/deploy-pages`](https://github.com/actions/deploy-pages) on push to `main`.
+
+| Config | Value |
+|---|---|
+| Site URL | `https://nghiaxh.github.io` |
+| Base path | `/blog` (`astro.config.mjs` → `base: '/blog'`) |
+| Build output | `dist/` |
+| Node version | 22 |
+
+Workflow file: `.github/workflows/deploy.yml`.
 
 ## Theme (dark-only)
 
