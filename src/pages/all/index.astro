@@ -19,10 +19,6 @@ for (const post of pagePosts) {
 ---
 
 <BaseLayout title="Bài viết" description="Tất cả bài viết">
-  <p class="mb-10 text-sm">
-    <a href={base} class="hover:text-fg hover:underline transition-colors">Quay lại</a>
-  </p>
-
   <h1 class="text-3xl font-bold mb-8 text-fg">Bài viết</h1>
 
   {Object.entries(groupedByYear).reverse().map(([year, yearPosts]) => (
