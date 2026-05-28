@@ -24,6 +24,7 @@ const tutorial = defineCollection({
     updatedDate: z.coerce.date().optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    coverImage: z.string().optional(),
     draft: z.boolean().optional().default(false),
   }),
 });

@@ -3,6 +3,7 @@ title: 'Hello World'
 description: 'Hướng dẫn viết định dạng Markdown'
 pubDate: 2026-05-25
 tags: ['personal', 'markdown']
+coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800'
 ---
 
 ## Giới thiệu
