@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 
@@ -27,7 +28,8 @@ const base = import.meta.env.BASE_URL;
     <slot name="head" />
   </head>
   <body class="bg-bg text-fg font-sans antialiased">
-    <main class="mx-auto max-w-2xl px-6 py-12 min-h-screen">
+    <NavBar />
+    <main class="mx-auto max-w-2xl px-6 py-10 min-h-screen">
       <slot />
     </main>
     <Footer />
