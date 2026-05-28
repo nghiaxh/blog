@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -11,9 +12,13 @@ export async function getStaticPaths() {
 }
 
 const { tutorial } = Astro.props;
-const { Content } = await render(tutorial);
+const { Content, headings: renderedHeadings } = await render(tutorial);
 const base = import.meta.env.BASE_URL;
 const category = tutorial.data.category ?? tutorial.id.split('/')[0];
+
+const headings = renderedHeadings
+  .filter(h => h.depth >= 1 && h.depth <= 3)
+  .map(h => ({ level: h.depth, text: h.text, id: h.slug }));
 ---
 
 <BaseLayout title={tutorial.data.title} description={tutorial.data.description}>
@@ -42,6 +47,16 @@ const category = tutorial.data.category ?? tutorial.id.split('/')[0];
       </div>
     </header>
 
+    {tutorial.data.coverImage && (
+      <img
+        src={tutorial.data.coverImage}
+        alt=""
+        class="w-full rounded-lg mb-10"
+        loading="eager"
+      />
+    )}
+
+    <TableOfContents headings={headings} />
     <div class="prose prose-neutral max-w-none prose-invert">
       <Content />
     </div>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -63,21 +64,7 @@ const headings = renderedHeadings
       />
     )}
 
-    {headings.length > 0 && (
-      <aside class="hidden lg:block fixed top-32 right-[max(calc(50%-21rem-14rem),1.5rem)] w-44">
-        <nav class="text-xs space-y-0.5 border-l border-border pl-3">
-          <p class="text-sm font-bold text-fg mb-2 uppercase">Mục lục</p>
-          {headings.map(h => (
-            <a
-              href={`#${h.id}`}
-              class={`block leading-relaxed hover:text-fg hover:underline transition-colors ${h.level === 1 ? 'font-bold' : ''} ${h.level === 2 ? 'pl-3' : ''} ${h.level === 3 ? 'pl-5' : ''}`}
-            >
-              {h.text}
-            </a>
-          ))}
-        </nav>
-      </aside>
-    )}
+    <TableOfContents headings={headings} />
     <div class="prose prose-neutral max-w-none prose-invert">
       <Content />
     </div>
