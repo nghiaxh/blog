@@ -1,10 +1,10 @@
 ---
 title: 'Làm việc với CSS Flexbox'
-description: 'Hướng dẫn chi tiết về Flexbox — cách sắp xếp bố cục linh hoạt với CSS'
+description: 'Hướng dẫn chi tiết về Flexbox, cách sắp xếp bố cục linh hoạt với CSS'
 pubDate: 2026-05-28
 category: 'css'
 tags: ['css', 'frontend', 'layout']
-coverImage: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=800'
+coverImage: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=1600'
 ---
 
 ## Flexbox là gì?
