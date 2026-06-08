@@ -4,7 +4,7 @@ description: 'Hướng dẫn cài đặt Node.js và npm trên Windows, macOS v�
 pubDate: 2026-05-28
 category: 'nodejs'
 tags: ['nodejs', 'npm', 'javascript', 'frontend']
-coverImage: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800'
+coverImage: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1600'
 ---
 
 ## Node.js là gì?
