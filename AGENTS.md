@@ -40,30 +40,30 @@ Workflow file: `.github/workflows/deploy.yml`.
 
 Theme values defined in `src/styles/global.css` via Tailwind v4 `@theme`:
 
-| Class | Hex | Dùng cho |
+| Class | Hex | Used for |
 |---|---|---|
-| `text-fg` / `bg-fg` | `#e5e5e5` | Nội dung chính (body, headings, links) |
-| `text-primary` / `bg-primary` | `#60a5fa` | Accent/màu nhấn (links) |
-| `bg-bg` | `#0a0a0a` | Nền trang |
-| `border-border` | `#262626` | Đường viền |
+| `text-fg` / `bg-fg` | `#e5e5e5` | Main content (body, headings, links) |
+| `text-primary` / `bg-primary` | `#60a5fa` | Accent color (links) |
+| `bg-bg` | `#0a0a0a` | Page background |
+| `border-border` | `#262626` | Borders |
 
-**Không có light mode.** Site chạy dark theme cố định. Không dùng `dark:` variants.
+**No light mode.** Site runs fixed dark theme. Do not use `dark:` variants.
 
 ## Text color rules
 
-Luôn dùng `text-fg` cho tất cả văn bản: body, headings, list items, metadata, back link, year labels, footer, nav links, project descriptions.
+Always use `text-fg` for all text: body, headings, list items, metadata, back link, year labels, footer, nav links, project descriptions.
 
-Link mặc định dùng `text-primary`, hover chuyển `text-fg` kèm `hover:underline`.
+Links default to `text-primary`, hover changes to `text-fg` with `hover:underline`.
 
 ## Prose (blog post body)
 
-`src/styles/global.css` override sẵn `--tw-prose-*` variables. Blog content nằm trong `<div class="prose prose-neutral max-w-none">`.
+`src/styles/global.css` overrides `--tw-prose-*` variables. Blog content sits inside `<div class="prose prose-neutral max-w-none">`.
 
 ## Mermaid
 
-Cấu hình trong `astro.config.mjs` — `mermaid({ theme: 'dark', autoTheme: true })`.
+Configured in `astro.config.mjs` — `mermaid({ theme: 'dark', autoTheme: true })`.
 
-Dùng trong Markdown/MDX:
+Used in Markdown/MDX:
 
 ````
 ```mermaid
@@ -72,11 +72,11 @@ graph LR
 ```
 ````
 
-Render phía client (không ảnh hưởng build time). Site dark theme nên `theme: 'dark'`.
+Renders client-side (does not affect build time). Site uses dark theme so `theme: 'dark'`.
 
 ## Favicon
 
-`public/favicon.svg` — nền đen (`#111`), chữ **N** trắng, bo góc 6px.
+`public/favicon.svg` — black background (`#111`), white **N** letter, 6px rounded corners.
 
 ## Content collection (blog)
 
@@ -89,7 +89,7 @@ Schema (Zod) in `src/content.config.ts`:
 
 `base: '/blog'` (GitHub Pages project site).
 
-| Route | File | URL thực tế |
+| Route | File | Actual URL |
 |---|---|---|
 | `/` | `src/pages/index.astro` | `/blog/` |
 | `/[slug]` | `src/pages/[...slug].astro` | `/blog/slug` |
@@ -97,15 +97,15 @@ Schema (Zod) in `src/content.config.ts`:
 | `/projects` | `src/pages/projects.astro` | `/blog/projects` |
 | `/rss.xml` | `src/pages/rss.xml.js` | `/blog/rss.xml` |
 
-**Quan trọng:** Mọi internal link (absolute path) phải dùng `import.meta.env.BASE_URL` prefix, vì site deploy ở sub-path `/blog`. Ví dụ: `href={base + '/all'}`, `href={base + '/' + post.id}`.
+**Important:** All internal links (absolute paths) must use `import.meta.env.BASE_URL` prefix, because the site is deployed at sub-path `/blog`. Example: `href={base + '/all'}`, `href={base + '/' + post.id}`.
 
 ## JSX / React
 
-Khi dùng React (`.tsx`), camelCase props: `className`, `strokeWidth`, `strokeLinecap`.
+When using React (`.tsx`), camelCase props: `className`, `strokeWidth`, `strokeLinecap`.
 
 ## Git commit convention
 
-Dùng [Conventional Commits](https://www.conventionalcommits.org/):
+Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 <type>(<scope>): <description>
@@ -113,15 +113,15 @@ Dùng [Conventional Commits](https://www.conventionalcommits.org/):
 
 Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `style`, `perf`, `test`, `ci`, `build`.
 
-- `feat` — tính năng mới
-- `fix` — sửa lỗi
-- `docs` — thay đổi tài liệu/blog content
-- `refactor` — tái cấu trúc code (không thay đổi hành vi)
-- `chore` — bảo trì, dependencies, config
-- `style` — format code, CSS
+- `feat` — new feature
+- `fix` — bug fix
+- `docs` — documentation/blog content changes
+- `refactor` — code refactoring (no behavior change)
+- `chore` — maintenance, dependencies, config
+- `style` — code formatting, CSS
 - `ci` — CI/CD
 - `build` — build system
 
-Scope (tuỳ chọn) là tên file/thư mục chịu ảnh hưởng. Ví dụ: `feat(favicon):`, `fix(blog):`, `chore(deps):`.
+Scope (optional) is the affected file/folder name. Example: `feat(favicon):`, `fix(blog):`, `chore(deps):`.
 
-Viết mô tả bằng tiếng Anh, thì hiện tại, không viết hoa chữ cái đầu, không có dấu chấm cuối.
+Write description in English, present tense, no capital first letter, no trailing period.
