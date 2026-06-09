@@ -42,7 +42,10 @@ git commit -m "feat: thêm tính năng mới"
 # Thêm remote
 git remote add origin https://github.com/ten-nguoi-dung/ten-repo.git
 
-# Đẩy code lên remote
+# Đổi tên nhánh hiện tại thành main (nếu đang là master)
+git branch -M main
+
+# Đẩy code lên remote lần đầu
 git push -u origin main
 
 # Kéo code mới nhất từ remote
@@ -59,13 +62,26 @@ Working Directory  →    Staging Area  →    Local Repo   →    Remote Repo
 ```
 
 1. **Working Directory**: Làm việc trong thư mục dự án
-2. **Staging Area** — Dùng `git add` để đánh dấu file sẽ commit
-3. **Local Repo** — Dùng `git commit` để lưu snapshot vào kho local
-4. **Remote Repo** — Dùng `git push` để đồng bộ lên GitHub/GitLab/etc...
+2. **Staging Area**: dùng `git add` để đánh dấu file sẽ commit
+3. **Local Repo**: dùng `git commit` để lưu snapshot vào kho local
+4. **Remote Repo**: dùng `git push` để đồng bộ lên GitHub/GitLab/etc...
 
 ---
 
-## 5. Xem lịch sử thay đổi
+## 5. Thuật ngữ cơ bản
+
+| Thuật ngữ | Ý nghĩa |
+|-----------|---------|
+| **Commit** | Thao tác lưu lại các thay đổi (thêm, xóa, sửa file) vào repository |
+| **Branch** | Một dòng phát triển riêng, cho phép làm việc độc lập mà không ảnh hưởng code chính |
+| **Remote** | Repository trên internet (GitHub, GitLab, …) mà local repo kết nối tới |
+| **Origin** | Tên mặc định của remote khi clone hoặc thêm remote lần đầu |
+| **Push** | Đẩy commit từ local repo lên remote repo |
+| **Pull** | Kéo commit mới nhất từ remote về local repo |
+
+---
+
+## 6. Xem lịch sử thay đổi
 
 ```bash
 # Xem lịch sử commit (gọn)
@@ -89,14 +105,34 @@ git diff --staged
 
 ---
 
-## 6. Các lệnh thường dùng
+## 7. Bảng tổng hợp lệnh Git
 
-| Lệnh | Mô tả |
-|------|-------|
-| `git status` | Xem trạng thái file |
-| `git log --oneline` | Xem lịch sử commit (gọn) |
-| `git diff` | Xem thay đổi chưa stage |
-| `git show <hash>` | Xem chi tiết commit |
+### Bắt đầu với Git
+
+| Lệnh | Ý nghĩa |
+|------|---------|
+| `git init` | Khởi tạo repository Git |
+| `git config --global user.name "tên"` | Đặt tên người dùng Git |
+| `git config --global user.email "email"` | Đặt email người dùng Git |
+
+### Làm việc cơ bản
+
+| Lệnh | Ý nghĩa |
+|------|---------|
+| `git status` | Kiểm tra trạng thái file |
+| `git add .` | Thêm tất cả file vào staging |
+| `git add ten-file` | Thêm một file vào staging |
+| `git commit -m "message"` | Lưu thay đổi với ghi chú commit |
+| `git log --oneline` | Xem lịch sử commit ngắn gọn |
+
+### Share repo lên GitHub
+
+| Lệnh | Ý nghĩa |
+|------|---------|
+| `git remote add origin URL` | Kết nối repository local với GitHub |
+| `git branch -M main` | Đổi tên nhánh chính thành main |
+| `git push -u origin main` | Đẩy code lên GitHub lần đầu |
+| `git pull` | Đồng bộ code từ GitHub về |
 
 ---
 

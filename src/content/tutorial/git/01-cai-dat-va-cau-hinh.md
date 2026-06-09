@@ -10,6 +10,18 @@ coverImage: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800"
 
 Git là hệ thống quản lý phiên bản phân tán (DVCS) phổ biến nhất hiện nay, giúp bạn theo dõi lịch sử thay đổi của mã nguồn và làm việc nhóm hiệu quả.
 
+## Hệ thống quản lý phiên bản (VCS) là gì?
+
+VCS (Version Control System) là hệ thống giúp lưu lại lịch sử thay đổi như một phiên bản của dự án tại thời điểm xác định, cho phép bạn quay lại bất kỳ phiên bản nào khi cần.
+
+### Các loại VCS
+
+| Loại | Mô tả |
+|------|-------|
+| **Local VCS** | Lưu lịch sử phiên bản vào một thư mục trên máy tính cục bộ, đơn giản nhưng không chia sẻ được |
+| **Centralized VCS** (CVCS) | Có server trung tâm chứa toàn bộ file và lịch sử. Mọi người phải kết nối server để làm việc, máy tính chỉ lưu file hiện tại |
+| **Distributed VCS** (DVCS) | Mỗi máy lập trình viên lưu toàn bộ kho chứa (repository) bao gồm cả lịch sử, có thể làm việc offline, Git là DVCS điển hình |
+
 ---
 
 ## 1. Cài đặt Git

@@ -21,6 +21,9 @@ git branch
 # Liệt kê tất cả branch (kể cả remote)
 git branch -a
 
+# Xem branch và commit mới nhất
+git branch -v
+
 # Tạo branch mới
 git branch ten-branch
 
