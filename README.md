@@ -1,6 +1,6 @@
 # Blog
 
-Blog cá nhân — chia sẻ kiến thức về lập trình và các dự án.
+Blog cá nhân, chia sẻ kiến thức về lập trình và các dự án.
 
 ## Công nghệ
 

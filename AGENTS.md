@@ -1,4 +1,4 @@
-# AGENTS.md — blog
+# AGENTS.md, blog
 
 ## Tech Stack
 
@@ -18,7 +18,7 @@
 | Command | What it does |
 |---|---|
 | `npm run dev` | Astro dev server |
-| `npm run build` | `astro build` — static site to `dist/` |
+| `npm run build` | `astro build`, static site to `dist/` |
 | `npm run preview` | Astro preview of built `dist/` |
 
 No linter or test framework configured.
@@ -61,7 +61,7 @@ Links default to `text-primary`, hover changes to `text-fg` with `hover:underlin
 
 ## Mermaid
 
-Configured in `astro.config.mjs` — `mermaid({ theme: 'dark', autoTheme: true })`.
+Configured in `astro.config.mjs`, `mermaid({ theme: 'dark', autoTheme: true })`.
 
 Used in Markdown/MDX:
 
@@ -76,7 +76,7 @@ Renders client-side (does not affect build time). Site uses dark theme so `theme
 
 ## Favicon
 
-`public/favicon.svg` — black background (`#111`), white **N** letter, 6px rounded corners.
+`public/favicon.svg`, black background (`#111`), white **N** letter, 6px rounded corners.
 
 ## Content collection (blog)
 
@@ -113,14 +113,14 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 Types: `feat`, `fix`, `docs`, `refactor`, `chore`, `style`, `perf`, `test`, `ci`, `build`.
 
-- `feat` — new feature
-- `fix` — bug fix
-- `docs` — documentation/blog content changes
-- `refactor` — code refactoring (no behavior change)
-- `chore` — maintenance, dependencies, config
-- `style` — code formatting, CSS
-- `ci` — CI/CD
-- `build` — build system
+- `feat`: new feature
+- `fix`: bug fix
+- `docs`: documentation/blog content changes
+- `refactor`: code refactoring (no behavior change)
+- `chore`: maintenance, dependencies, config
+- `style`: code formatting, CSS
+- `ci`: CI/CD
+- `build`: build system
 
 Scope (optional) is the affected file/folder name. Example: `feat(favicon):`, `fix(blog):`, `chore(deps):`.
 
