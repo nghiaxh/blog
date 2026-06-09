@@ -1,0 +1,7 @@
+[
+  { "id": "quizzy", "title": "Quizzy", "description": "Ứng dụng tạo và học trắc nghiệm đơn giản.", "status": "active" },
+  { "id": "learn-toeic", "title": "Learn TOEIC", "description": "Ứng dụng ôn tập và mô phỏng thi TOEIC.", "status": "active" },
+  { "id": "custom-pm", "title": "Custom Project Manager", "description": "Ứng dụng quản lý dự án", "status": "participated" },
+  { "id": "ebookshelf", "title": "Ebookshelf", "description": "Ứng dụng quản lý thư viện", "status": "archived" },
+  { "id": "euler-cycle", "title": "Euler Cycle", "description": "Ứng dụng mô phỏng lý thuyết đồ thị", "status": "archived" }
+]
